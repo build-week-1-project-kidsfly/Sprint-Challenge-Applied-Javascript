@@ -56,11 +56,15 @@ function Cards(obj) {
         return card;
 }
 
-
+// Api Request
 axios.get('https://lambda-times-backend.herokuapp.com/articles')
     .then((item) => {
+        // Data from Api
         const headlinesData = item.data.articles;
+        // Programs extracts the keys from the data
         const programs = Object.keys(item.data.articles);
+        // Iterated over programs to extract headlines and
+        // pass information to appended Cards component
         programs.forEach(x => {
                 headlinesData[x].forEach(y => {
                         cardsCont.appendChild(Cards(y));
@@ -68,5 +72,6 @@ axios.get('https://lambda-times-backend.herokuapp.com/articles')
         });
     })
     .catch(() => {
+        // In case if something goes wrong
         console.log('error....');
     });
