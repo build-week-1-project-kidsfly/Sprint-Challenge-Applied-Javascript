@@ -26,6 +26,19 @@ card.classList.add('card');
 const headLine = document.createElement('div');
 headLine.classList.add('headline');
 headLine.textContent = {???};
+card.appendChild(headLine);
+
+// Author - div
+const author = document.createElement('div');
+author.classList.add('author');
+card.appendChild(author);
+
+// Img Container - div
+const imgDiv = document.createElement('div');
+imgDiv.classList.add('img-container');
+author.appendChild(imgDiv);
+
+
 
 
 axios.get('https://lambda-times-backend.herokuapp.com/articles')
