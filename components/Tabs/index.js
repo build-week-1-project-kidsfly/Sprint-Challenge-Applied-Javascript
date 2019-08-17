@@ -11,6 +11,7 @@
 axios.get('https://lambda-times-backend.herokuapp.com/topics')
     .then((item) => {
         const topics = document.querySelector('.topics');
+
         const topicsData = item.data.topics;
         const newTopics = topicsData.map(item => {
             let tab = document.createElement('div');
@@ -21,4 +22,4 @@ axios.get('https://lambda-times-backend.herokuapp.com/topics')
     })
     .catch(() => {
         console.log('error....');
-    })
+    });
