@@ -7,7 +7,7 @@
 // Create a function that will programmatically create the following DOM component:
 //
 // <div class="card">
-//   <div class="headline">{Headline of article}</div>
+//   <div class="headline">{Headline of article}</div>    //item.
 //   <div class="author">
 //     <div class="img-container">
 //       <img src={url of authors image} />
@@ -18,49 +18,60 @@
 //
 // Create a card for each of the articles and add the card to the DOM.
 
-// Card creation
-const card = document.createElement('div');
-card.classList.add('card');
+// Accessing Cards Container
+const cardsCont = document.querySelector('.cards-container');
 
-// Headline creation
-const headLine = document.createElement('div');
-headLine.classList.add('headline');
-headLine.textContent = {???};
-card.appendChild(headLine);
+function Cards(obj) {
+        const cardsCont = document.querySelector('.cards-container');
+        // Card creation
+        const card = document.createElement('div');
+        card.classList.add('card');
 
-// Author - div
-const author = document.createElement('div');
-author.classList.add('author');
-card.appendChild(author);
+        // Headline creation
+        const headLine = document.createElement('div');
+        headLine.classList.add('headline');
+        headLine.textContent = obj.data;
+        card.appendChild(headLine);
 
-// Img Container - div
-const imgDiv = document.createElement('div');
-imgDiv.classList.add('img-container');
-author.appendChild(imgDiv);
+        // Author - div
+        const author = document.createElement('div');
+        author.classList.add('author');
+        card.appendChild(author);
 
-// Img src - img
-const img = document.createElement('img');
-img.src = '{url of authors image}';
-imgDiv.appendChild(img);
+        // Img Container - div
+        const imgDiv = document.createElement('div');
+        imgDiv.classList.add('img-container');
+        author.appendChild(imgDiv);
 
-// Author Name - span
-const authorName = document.createElement('span');
-authorName.textContent = `By ${authors name}`;
-author.appendChild(authorName);
+        // Img src - img
+        const img = document.createElement('img');
+        img.src = obj.data;
+        imgDiv.appendChild(img);
+
+        // Author Name - span
+        const authorName = document.createElement('span');
+        authorName.textContent = `By ${obj.data}`;
+        author.appendChild(authorName);
 
 
-
-
+        return card;
+}
 
 
 axios.get('https://lambda-times-backend.herokuapp.com/articles')
     .then((item) => {
-        console.log(item.data);
-
-
-
+        const headlinesData = item.data;
+        // console.log(item.data);
+        const programs = Object.keys(item.data.articles);
+        programs.forEach(instance => {
+                item.data.articles[instance].forEach(thing => {
+                        document.querySelector('.cards-container').appendChild(Cards(thing));
+                })
+        });
+        // console.log(Cards(headlinesData));
+        // cardsCont.appendChild(card);
 
     })
     .catch(() => {
-        consol.log('error....');
+        console.log('error....');
     })
