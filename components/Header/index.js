@@ -10,8 +10,10 @@
 // And add it to the DOM in the .headerContainer component
 
 function Header() {
+    // Grabbed .headerContainer
     const headerCont = document.querySelector('.headerContainer');
 
+    // Created header div
     const header = document.createElement('div');
     header.classList.add('header');
 
@@ -33,5 +35,6 @@ function Header() {
     header.appendChild(temp);
 
 
+    // Added header component to .headerContainer
     headerCont.appendChild(header);
 }
