@@ -38,6 +38,18 @@ const imgDiv = document.createElement('div');
 imgDiv.classList.add('img-container');
 author.appendChild(imgDiv);
 
+// Img src - img
+const img = document.createElement('img');
+img.src = '{url of authors image}';
+imgDiv.appendChild(img);
+
+// Author Name - span
+const authorName = document.createElement('span');
+authorName.textContent = `By ${authors name}`;
+author.appendChild(authorName);
+
+
+
 
 
 
