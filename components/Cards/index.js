@@ -30,7 +30,7 @@ function Cards(obj) {
         // Headline creation
         const headLine = document.createElement('div');
         headLine.classList.add('headline');
-        headLine.textContent = obj.data;
+        headLine.textContent = obj.headline;
         card.appendChild(headLine);
 
         // Author - div
@@ -45,14 +45,13 @@ function Cards(obj) {
 
         // Img src - img
         const img = document.createElement('img');
-        img.src = obj.data;
+        img.src = obj.authorPhoto;
         imgDiv.appendChild(img);
 
         // Author Name - span
         const authorName = document.createElement('span');
-        authorName.textContent = `By ${obj.data}`;
+        authorName.textContent = `By ${obj.authorName}`;
         author.appendChild(authorName);
-
 
         return card;
 }
@@ -70,4 +69,4 @@ axios.get('https://lambda-times-backend.herokuapp.com/articles')
     })
     .catch(() => {
         console.log('error....');
-    })
+    });
