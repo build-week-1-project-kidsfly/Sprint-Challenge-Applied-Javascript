@@ -60,17 +60,13 @@ function Cards(obj) {
 
 axios.get('https://lambda-times-backend.herokuapp.com/articles')
     .then((item) => {
-        const headlinesData = item.data;
-        // console.log(item.data);
+        const headlinesData = item.data.articles;
         const programs = Object.keys(item.data.articles);
-        programs.forEach(instance => {
-                item.data.articles[instance].forEach(thing => {
-                        document.querySelector('.cards-container').appendChild(Cards(thing));
+        programs.forEach(x => {
+                headlinesData[x].forEach(y => {
+                        cardsCont.appendChild(Cards(y));
                 })
         });
-        // console.log(Cards(headlinesData));
-        // cardsCont.appendChild(card);
-
     })
     .catch(() => {
         console.log('error....');
